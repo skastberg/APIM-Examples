@@ -1,0 +1,16 @@
+exceptions 
+| where  ['type'] == 'GatewayError' and  customDimensions['Service Type'] == 'API Management'
+| extend o = todynamic(outerMessage)
+| extend message = o.message
+| extend statusCode = o.statusCode
+| extend ServiceName = tostring(customDimensions['Service Name'])
+| extend ApiName = tostring(customDimensions['API Name'])
+| extend Region = customDimensions['Region']
+| project timestamp, method, operation_Name, message, statusCode, iKey, ApiName, ServiceName,Region,operation_Id
+| join kind=innerunique 
+(
+    requests
+)
+on $left.operation_Id  == $right.operation_Id
+|sort  by timestamp desc 
+|project timestamp, method, operation_Name, message, statusCode, name, url,ServiceName, ApiName, Region, operation_Id 

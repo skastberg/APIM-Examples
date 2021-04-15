@@ -1,0 +1,178 @@
+<snips>
+
+    <snip>
+        <policies>
+            <inbound>
+                <base />
+                <validate-content unspecified-content-type-action="prevent" max-size="102400" sizG-GXCGGdGd-action="prevent" errors-variable-name="requestBodyValidation" />
+            </inbound>
+            <backend>
+                <base />
+            </backend>
+            <outbound>
+                <base />
+            </outbound>
+            <on-error>
+                <base />
+            </on-error>
+        </policies>
+
+
+    </snip>
+
+    <snip>
+
+        <policies>
+            <inbound>
+                <base />
+                <validate-content unspecified-content-type-action="prevent" max-size="102400" size-exceeded-action="prevent" errors-variable-name="requestBodyValidation">
+                    <content type="application/json" validate-as="json" action="prevent" />
+                </validate-content>
+            </inbound>
+            <backend>
+                <base />
+            </backend>
+            <outbound>
+                <base />
+            </outbound>
+            <on-error>
+                <base />
+            </on-error>
+        </policies>|
+
+
+
+    </snip>
+
+    <snip>
+        <policies>
+            <inbound>
+                <base />
+                <validate-parameters specified-parameter-action="ignore" unspecified-parameter-action="prevent" errors-variable-name="requestParametersValidation" />
+            </inbound>
+            <backend>
+                <base />
+            </backend>
+            <outbound>
+                <base />
+            </outbound>
+            <on-error>
+                <base />
+            </on-error>
+        </policies>
+
+    </snip>
+
+    <snip>
+        <policies>
+            <inbound>
+                <base />
+                <validate-parameters specified-parameter-action="ignore" unspecified-parameter-action="ignore" errors-variable-name="requestParametersValidation">
+                    <path specified-parameter-action="detect">
+                        <parameter name="format" action="prevent" />
+                    </path>
+                </validate-parameters>
+            </inbound>
+            <backend>
+                <base />
+            </backend>
+            <outbound>
+                <base />
+            </outbound>
+            <on-error>
+                <base />
+            </on-error>
+        </policies>
+    </snip>
+
+    <snip>
+        <policies>
+            <inbound>
+                <base />
+                <validate-parameters specified-parameter-action="prevent" unspecified-parameter-action="ignore" errors-variable-name="requestParametersValidation">
+                    <headers specified-parameter-action="detect" unspecified-parameter-action="ignore">
+                        <parameter name="spoken-language" action="prevent" />
+                    </headers>
+                </validate-parameters>
+            </inbound>
+            <backend>
+                <base />
+            </backend>
+            <outbound>
+                <base />
+            </outbound>
+            <on-error>
+                <base />
+            </on-error>
+        </policies>
+
+    </snip>
+    <snip>
+
+        <policies>
+            <inbound>
+                <base />
+                <validate-parameters specified-parameter-action="ignore" unspecified-parameter-action="ignore" errors-variable-name="requestParametersValidation">
+                    <query specified-parameter-action="detect" unspecified-parameter-action="ignore">
+                        <parameter name="dayno" action="prevent" />
+                    </query>
+                </validate-parameters>
+            </inbound>
+            <backend>
+                <base />
+            </backend>
+            <outbound>
+                <base />
+            </outbound>
+            <on-error>
+                <base />
+            </on-error>
+        </policies>
+
+    </snip>
+    <snip>
+        <policies>
+            <inbound>
+                <base />
+            </inbound>
+            <backend>
+                <base />
+            </backend>
+            <outbound>
+                <base />
+                <validate-headers specified-header-action="detect" unspecified-header-action="ignore" errors-variable-name="responseHeadersValidation">
+                    <header name="Test-Header" action="prevent" />
+                </validate-headers>
+            </outbound>
+            <on-error>
+                <base />
+            </on-error>
+        </policies>
+    </snip>
+    <snip>
+
+        <policies>
+            <inbound>
+                <base />
+            </inbound>
+            <backend>
+                <base />
+            </backend>
+            <outbound>
+                <base />
+                <validate-status-code unspecified-status-code-action="prevent" errors-variable-name="variable name">
+                    <status-code code="404" action="ignore" />
+                </validate-status-code>
+            </outbound>
+            <on-error>
+                <base />
+            </on-error>
+        </policies>
+
+    </snip>
+
+
+
+
+
+</snips>
